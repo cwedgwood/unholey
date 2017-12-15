@@ -82,9 +82,9 @@ int main(int ac, char *av[])
 	filename = av[1];
     }
 
-    fd = open(filename, O_RDWR|O_CREAT|O_TRUNC, 0755);
+    fd = open(filename, O_RDWR|O_CREAT|O_EXCL|O_TRUNC, 0755);
     if (fd < 0)
-	fail("unable to open");
+	fail("unable to create new file");
 
     // what errors?
     lseek(fd, 1*1024*1024, SEEK_SET);
